@@ -1,41 +1,37 @@
 package org.scijava.optional;
 
 import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.StringJoiner;
 
-public abstract class AbstractOptions< T extends AbstractOptions< T > > implements Options< T >
+public abstract class AbstractOptions< T > implements Options< T >
 {
-	final LinkedHashMap< String, Object > theOptions = new LinkedHashMap<>();
+	final LinkedHashMap< String, Object > theOptions;
 
-	protected AbstractOptions( T that )
+	protected AbstractOptions( final AbstractOptions< T > that )
 	{
-		that.theOptions.forEach( theOptions::put );
+		this.theOptions = new LinkedHashMap<>(that.theOptions);
 	}
 
 	public AbstractOptions()
 	{
+		this.theOptions = new LinkedHashMap<>();
 	}
 
-	protected T copyOrThis()
+	protected T append( final AbstractOptions< T > additionalOptions )
 	{
-		return ( T ) this;
-	}
-
-	protected T append( final T additionalOptions )
-	{
-		T concat = copyOrThis();
-		additionalOptions.theOptions.forEach( concat.theOptions::put );
-		return concat;
+		theOptions.putAll(additionalOptions.theOptions);
+		@SuppressWarnings("unchecked")
+		T t = (T) this;
+		return t;
 	}
 
 	@Override
 	public T setValue( final String key, final Object value )
 	{
-		final T copy = copyOrThis();
-		copy.theOptions.remove( key );
-		copy.theOptions.put( key, value );
-		return copy;
+		theOptions.put(key, value);
+		@SuppressWarnings("unchecked")
+		T t = (T) this;
+		return t;
 	}
 
 	@Override
