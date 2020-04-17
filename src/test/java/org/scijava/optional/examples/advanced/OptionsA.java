@@ -1,8 +1,8 @@
-package org.scijava.optional.example;
+package org.scijava.optional.examples.advanced;
 
 import org.scijava.optional.Options;
 
-interface OptionA< T > extends Options< T > {
+interface OptionsA< T > extends Options< T > {
 
 	default T a(int a) {
 		return setValue("a", a);
