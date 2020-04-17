@@ -13,6 +13,14 @@ public class FactoryAOptionsTest {
 	}
 
 	@Test
+	public void testClone() {
+		FactoryAOptions options = new FactoryAOptions().a(10);
+		FactoryAOptions modified = options.copy().a(20);
+		assertEquals(10, options.getA());
+		assertEquals(20, modified.getA());
+	}
+
+	@Test
 	public void testToString() {
 		FactoryAOptions options = new FactoryAOptions().a(10);
 		assertEquals("{ a=10 }", options.toString());

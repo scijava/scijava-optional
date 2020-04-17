@@ -1,5 +1,6 @@
 package org.scijava.optional;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.StringJoiner;
@@ -8,14 +9,23 @@ public abstract class AbstractOptions< T > implements Options< T >
 {
 	final private Map< String, Object > theOptions;
 
-	protected AbstractOptions( final AbstractOptions< T > that )
-	{
-		this.theOptions = new LinkedHashMap<>(that.theOptions);
-	}
-
 	public AbstractOptions()
 	{
 		this.theOptions = new LinkedHashMap<>();
+	}
+
+	public T copy() {
+		try {
+			AbstractOptions<T> copy = this.getClass().getConstructor().newInstance();
+			copy.append(this);
+			@SuppressWarnings("unchecked")
+			T t = (T) copy;
+			return t;
+		}
+		catch (InstantiationException | IllegalAccessException |
+				NoSuchMethodException | InvocationTargetException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	protected T append( final AbstractOptions< T > additionalOptions )
