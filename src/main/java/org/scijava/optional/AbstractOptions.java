@@ -14,13 +14,27 @@ public abstract class AbstractOptions< T > implements Options< T >
 		this.theOptions = new LinkedHashMap<>();
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")
+	public T setValue( final String key, final Object value )
+	{
+		theOptions.put(key, value);
+		return (T) this;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public < V > V getValueOrDefault(String key, V defaultValue) {
+		V value = (V) theOptions.get(key);
+		return value != null ? value : defaultValue;
+	}
+
+	@SuppressWarnings("unchecked")
 	public T copy() {
 		try {
 			AbstractOptions<T> copy = this.getClass().getConstructor().newInstance();
-			copy.append(this);
-			@SuppressWarnings("unchecked")
-			T t = (T) copy;
-			return t;
+			copy.append((T) this);
+			return (T) copy;
 		}
 		catch (InstantiationException | IllegalAccessException |
 				NoSuchMethodException | InvocationTargetException e) {
@@ -28,29 +42,13 @@ public abstract class AbstractOptions< T > implements Options< T >
 		}
 	}
 
-	protected T append( final AbstractOptions< T > additionalOptions )
+	@SuppressWarnings("unchecked")
+	protected T append( T additionalOptions )
 	{
-		theOptions.putAll(additionalOptions.theOptions);
-		@SuppressWarnings("unchecked")
-		T t = (T) this;
-		return t;
+		theOptions.putAll(((AbstractOptions) additionalOptions).theOptions);
+		return (T) this;
 	}
 
-	@Override
-	public T setValue( final String key, final Object value )
-	{
-		theOptions.put(key, value);
-		@SuppressWarnings("unchecked")
-		T t = (T) this;
-		return t;
-	}
-
-	@Override
-	public < V > V getValue(String key, V defaultValue) {
-		@SuppressWarnings("unchecked")
-		V value = (V) theOptions.get(key);
-		return value != null ? value : defaultValue;
-	}
 
 	@Override
 	public String toString()
