@@ -1,11 +1,12 @@
 package org.scijava.optional;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.StringJoiner;
 
 public abstract class AbstractOptions< T > implements Options< T >
 {
-	final LinkedHashMap< String, Object > theOptions;
+	final private Map< String, Object > theOptions;
 
 	protected AbstractOptions( final AbstractOptions< T > that )
 	{
@@ -35,10 +36,18 @@ public abstract class AbstractOptions< T > implements Options< T >
 	}
 
 	@Override
+	public < V > V getValue(String key, V defaultValue) {
+		@SuppressWarnings("unchecked")
+		V value = (V) theOptions.get(key);
+		return value != null ? value : defaultValue;
+	}
+
+	@Override
 	public String toString()
 	{
 		StringJoiner result = new StringJoiner(", ","{ ",  " }");
 		theOptions.forEach((key, value) -> result.add(key + "=" + value));
 		return result.toString();
 	}
+
 }

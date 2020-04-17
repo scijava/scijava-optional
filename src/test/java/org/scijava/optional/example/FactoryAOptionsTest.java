@@ -9,7 +9,7 @@ public class FactoryAOptionsTest {
 	@Test
 	public void test() {
 		FactoryAOptions options = new FactoryAOptions().a(10);
-		assertEquals(10, options.values.a());
+		assertEquals(10, options.getA());
 	}
 
 	@Test
@@ -21,6 +21,7 @@ public class FactoryAOptionsTest {
 	@Test
 	public void testValuesToString() {
 		FactoryAOptions options = new FactoryAOptions().a(10);
-		assertEquals("{ a=10 }", options.values.toString());
+		assertEquals("{ a=10 }", options.toString());
 	}
+
 }
