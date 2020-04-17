@@ -58,16 +58,14 @@
  *     // If in-place modification of the options builder is desired,
  *     // the following methods should be left out.
  *
- *     public FactoryAOptions() {
- *         super();
- *     }
+ *     public FactoryAOptions() {}
  *
  *     private FactoryAOptions(FactoryAOptions that) {
  *         super(that);
  *     }
  *
  *     \@Override
- *     public FactoryAOptions copyOrThis() {
+ *     protected FactoryAOptions copyOrThis() {
  *         return new FactoryAOptions(this);
  *     }
  *
