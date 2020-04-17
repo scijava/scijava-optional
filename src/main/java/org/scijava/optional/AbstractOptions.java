@@ -29,7 +29,7 @@ public abstract class AbstractOptions< T extends AbstractOptions< T > > implemen
 	}
 
 	@Override
-	public T add( final String key, final Object value )
+	public T setValue( final String key, final Object value )
 	{
 		final T copy = copyOrThis();
 		copy.theOptions.remove( key );

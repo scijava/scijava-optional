@@ -17,7 +17,7 @@ public abstract class AbstractValues implements Values
 	}
 
 	@Override
-	public < T > T value( final String key, final T defaultValue )
+	public < T > T getValue( final String key, final T defaultValue )
 	{
 		@SuppressWarnings( "unchecked" )
 		final T value = ( T ) theOptions.get( key );
