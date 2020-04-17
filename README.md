@@ -1,3 +1,5 @@
+[![](https://travis-ci.com/scijava/scijava-optional.svg?branch=master)](https://travis-ci.com/scijava/scijava-optional)
+
 # scijava-optional
 
 Helpers for emulating named and default arguments in builder-like classes.
