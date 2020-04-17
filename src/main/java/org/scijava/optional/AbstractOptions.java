@@ -23,6 +23,9 @@ public abstract class AbstractOptions< T extends AbstractOptions< T > > implemen
 
 	protected T append( final T additionalOptions )
 	{
+		if ( additionalOptions == null )
+			return ( T ) this;
+
 		T concat = copyOrThis();
 		additionalOptions.theOptions.forEach( concat.theOptions::put );
 		return concat;
