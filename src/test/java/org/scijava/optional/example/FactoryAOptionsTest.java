@@ -11,4 +11,16 @@ public class FactoryAOptionsTest {
 		FactoryAOptions options = new FactoryAOptions().a(10);
 		assertEquals(10, options.values.a());
 	}
+
+	@Test
+	public void testToString() {
+		FactoryAOptions options = new FactoryAOptions().a(10);
+		assertEquals("{ a=10 }", options.toString());
+	}
+
+	@Test
+	public void testValuesToString() {
+		FactoryAOptions options = new FactoryAOptions().a(10);
+		assertEquals("{ a=10 }", options.values.toString());
+	}
 }

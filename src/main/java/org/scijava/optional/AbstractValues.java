@@ -1,6 +1,7 @@
 package org.scijava.optional;
 
 import java.util.LinkedHashMap;
+import java.util.StringJoiner;
 
 public abstract class AbstractValues implements Values
 {
@@ -11,11 +12,6 @@ public abstract class AbstractValues implements Values
 		this.theOptions = options.theOptions;
 	}
 
-	public void buildToString( final ValuesToString sb )
-	{
-		throw new UnsupportedOperationException( "internal, not supposed to be called" );
-	}
-
 	@Override
 	public < T > T getValue( final String key, final T defaultValue )
 	{
@@ -24,36 +20,10 @@ public abstract class AbstractValues implements Values
 		return value == null ? defaultValue : value;
 	}
 
-	public class ValuesToString
-	{
-		private final StringBuilder sb;
-
-		private boolean first;
-
-		public ValuesToString()
-		{
-			sb = new StringBuilder().append( "{" );
-			first = true;
-		}
-
-		public < T > void append( final String key, final T value )
-		{
-			if ( first )
-				first = false;
-			else
-				sb.append( ", " );
-			sb.append( key );
-			sb.append( " = " );
-			sb.append( value );
-			if ( !theOptions.containsKey( key ) )
-				sb.append( " [default]" );
-		}
-
-		@Override
-		public String toString()
-		{
-			sb.append( "}" );
-			return sb.toString();
-		}
+	@Override
+	public String toString() {
+		StringJoiner result = new StringJoiner(", ","{ ",  " }");
+		theOptions.forEach((key, value) -> result.add(key + "=" + value));
+		return result.toString();
 	}
 }

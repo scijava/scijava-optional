@@ -2,6 +2,7 @@ package org.scijava.optional;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.StringJoiner;
 
 public abstract class AbstractOptions< T extends AbstractOptions< T > > implements Options< T >
 {
@@ -40,18 +41,8 @@ public abstract class AbstractOptions< T extends AbstractOptions< T > > implemen
 	@Override
 	public String toString()
 	{
-		final StringBuilder sb = new StringBuilder();
-		sb.append( "{" );
-		int numLeft = theOptions.size();
-		for ( Map.Entry< String, Object > option : theOptions.entrySet() )
-		{
-			sb.append( option.getKey() );
-			sb.append( " = " );
-			sb.append( option.getValue() );
-			if ( --numLeft > 0 )
-				sb.append( ", " );
-		}
-		sb.append( "}" );
-		return sb.toString();
+		StringJoiner result = new StringJoiner(", ","{ ",  " }");
+		theOptions.forEach((key, value) -> result.add(key + "=" + value));
+		return result.toString();
 	}
 }
