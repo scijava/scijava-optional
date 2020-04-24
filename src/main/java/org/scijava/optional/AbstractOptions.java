@@ -1,9 +1,11 @@
 package org.scijava.optional;
 
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 
-public abstract class AbstractOptions< T extends AbstractOptions< T > > implements Options< T >
+public abstract class AbstractOptions< T extends AbstractOptions< T > > implements Options< T >, Map<String, Object>
 {
 	final LinkedHashMap< String, Object > theOptions = new LinkedHashMap<>();
 
@@ -56,5 +58,65 @@ public abstract class AbstractOptions< T extends AbstractOptions< T > > implemen
 		}
 		sb.append( "}" );
 		return sb.toString();
+	}
+
+	@Override
+	public int size() {
+		return theOptions.size();
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return theOptions.isEmpty();
+	}
+
+	@Override
+	public boolean containsKey(Object key) {
+		return theOptions.containsKey(key);
+	}
+
+	@Override
+	public boolean containsValue(Object value) {
+		return theOptions.containsValue(value);
+	}
+
+	@Override
+	public Object get(Object key) {
+		return theOptions.get(key);
+	}
+
+	@Override
+	public Object put(String key, Object value) {
+		return theOptions.put(key, value);
+	}
+
+	@Override
+	public Object remove(Object key) {
+		return theOptions.remove(key);
+	}
+
+	@Override
+	public void putAll(Map<? extends String, ?> m) {
+		theOptions.putAll(m);
+	}
+
+	@Override
+	public void clear() {
+		theOptions.clear();
+	}
+
+	@Override
+	public Set<String> keySet() {
+		return theOptions.keySet();
+	}
+
+	@Override
+	public Collection<Object> values() {
+		return theOptions.values();
+	}
+
+	@Override
+	public Set<Entry<String, Object>> entrySet() {
+		return theOptions.entrySet();
 	}
 }
