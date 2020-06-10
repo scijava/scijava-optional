@@ -1,6 +1,7 @@
 package org.scijava.optional;
 
 import java.util.LinkedHashMap;
+import java.util.function.BiConsumer;
 
 public abstract class AbstractValues implements Values
 {
@@ -11,9 +12,17 @@ public abstract class AbstractValues implements Values
 		this.theOptions = options.theOptions;
 	}
 
-	public void buildToString( final ValuesToString sb )
+	public void forEach( BiConsumer< String, Object > action )
 	{
-		throw new UnsupportedOperationException( "internal, not supposed to be called" );
+		theOptions.forEach( action );
+	}
+
+	@Override
+	public String toString()
+	{
+		final ValuesToString sb = new ValuesToString();
+		forEach( sb );
+		return sb.toString();
 	}
 
 	@Override
@@ -24,7 +33,7 @@ public abstract class AbstractValues implements Values
 		return value == null ? defaultValue : value;
 	}
 
-	public class ValuesToString
+	public class ValuesToString implements BiConsumer< String, Object >
 	{
 		private final StringBuilder sb;
 
@@ -36,7 +45,15 @@ public abstract class AbstractValues implements Values
 			first = true;
 		}
 
-		public < T > void append( final String key, final T value )
+		@Override
+		public String toString()
+		{
+			sb.append( "}" );
+			return sb.toString();
+		}
+
+		@Override
+		public void accept( final String key, final Object value )
 		{
 			if ( first )
 				first = false;
@@ -47,13 +64,6 @@ public abstract class AbstractValues implements Values
 			sb.append( value );
 			if ( !theOptions.containsKey( key ) )
 				sb.append( " [default]" );
-		}
-
-		@Override
-		public String toString()
-		{
-			sb.append( "}" );
-			return sb.toString();
 		}
 	}
 }
