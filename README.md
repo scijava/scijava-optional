@@ -14,7 +14,7 @@ a method `a(int)` to set the optional parameter. But `FactoryAOptions::a` should
 and `FactoryBOptions::a` should return a `FactoryBOptions` to allow chaining more parameters of
 `FactoryAOptions` and `FactoryBOptions` respectively, while retaining the type of the builder.
 
-Using scijava-optional, this can be achieved as follows:
+Using scijava-optional, this can be achieved as follows (see [full example](src/test/java/org/scijava/optional/examples/Playground.java)):
 
 Each subset of optional parameters ("`int a`" in the above example) is implemented as two interfaces,
 one exposing methods to set the parameters, one exposing methods to retrieve parameter values.
