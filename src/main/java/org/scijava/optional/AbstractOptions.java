@@ -37,7 +37,7 @@ public abstract class AbstractOptions< T extends AbstractOptions< T > > implemen
 	}
 
 	@Override
-	public T add( final String key, final Object value )
+	public T setValue( final String key, final Object value )
 	{
 		final T copy = copyOrThis();
 		// NB remove existing key for ordering for appended options
@@ -80,7 +80,7 @@ public abstract class AbstractOptions< T extends AbstractOptions< T > > implemen
 		}
 
 		@Override
-		public < T > T value( final String key, final T defaultValue )
+		public < T > T getValueOrDefault( final String key, final T defaultValue )
 		{
 			@SuppressWarnings( "unchecked" )
 			final T value = ( T ) theOptions.get( key );

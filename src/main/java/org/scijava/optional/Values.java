@@ -2,5 +2,5 @@ package org.scijava.optional;
 
 public interface Values
 {
-	< T > T value( String key, T defaultValue );
+	< T > T getValueOrDefault( String key, T defaultValue );
 }
