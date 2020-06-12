@@ -1,5 +1,6 @@
 package org.scijava.optional;
 
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
@@ -56,7 +57,7 @@ public abstract class AbstractOptions< T extends AbstractOptions< T > > implemen
 		{
 			sb.append( option.getKey() );
 			sb.append( " = " );
-			sb.append( option.getValue() );
+			sb.append( valueToString( option.getValue() ) );
 			if ( --numLeft > 0 )
 				sb.append( ", " );
 		}
@@ -116,9 +117,36 @@ public abstract class AbstractOptions< T extends AbstractOptions< T > > implemen
 				sb.append( ", " );
 			sb.append( key );
 			sb.append( " = " );
-			sb.append( value );
+			sb.append( valueToString( value ) );
 			if ( !theOptions.containsKey( key ) )
 				sb.append( " [default]" );
 		}
+	}
+
+	private static String valueToString( final Object value )
+	{
+		if ( value != null && value.getClass().isArray() )
+		{
+			if ( value instanceof long[] )
+				return Arrays.toString( ( long[] ) value );
+			else if ( value instanceof int[] )
+				return Arrays.toString( ( int[] ) value );
+			else if ( value instanceof short[] )
+				return Arrays.toString( ( short[] ) value );
+			else if ( value instanceof char[] )
+				return Arrays.toString( ( char[] ) value );
+			else if ( value instanceof byte[] )
+				return Arrays.toString( ( byte[] ) value );
+			else if ( value instanceof boolean[] )
+				return Arrays.toString( ( boolean[] ) value );
+			else if ( value instanceof double[] )
+				return Arrays.toString( ( double[] ) value );
+			else if ( value instanceof float[] )
+				return Arrays.toString( ( float[] ) value );
+			else
+				return Arrays.deepToString( ( Object[] ) value );
+		}
+		else
+			return String.valueOf( value );
 	}
 }
