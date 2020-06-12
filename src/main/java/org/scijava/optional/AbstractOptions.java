@@ -50,18 +50,8 @@ public abstract class AbstractOptions< T extends AbstractOptions< T > > implemen
 	@Override
 	public String toString()
 	{
-		final StringBuilder sb = new StringBuilder();
-		sb.append( "{" );
-		int numLeft = theOptions.size();
-		for ( Map.Entry< String, Object > option : theOptions.entrySet() )
-		{
-			sb.append( option.getKey() );
-			sb.append( " = " );
-			sb.append( valueToString( option.getValue() ) );
-			if ( --numLeft > 0 )
-				sb.append( ", " );
-		}
-		sb.append( "}" );
+		final ValuesToString sb = new ValuesToString();
+		theOptions.forEach( sb );
 		return sb.toString();
 	}
 
