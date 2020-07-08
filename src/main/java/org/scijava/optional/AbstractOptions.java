@@ -73,9 +73,7 @@ public abstract class AbstractOptions< T extends AbstractOptions< T > > implemen
 		@Override
 		public < T > T getValueOrDefault( final String key, final T defaultValue )
 		{
-			@SuppressWarnings( "unchecked" )
-			final T value = ( T ) theOptions.get( key );
-			return value == null ? defaultValue : value;
+			return theOptions.containsKey( key ) ? ( T ) theOptions.get( key ) : defaultValue;
 		}
 	}
 
