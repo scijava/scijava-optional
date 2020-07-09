@@ -98,7 +98,7 @@ public class FactoryAValues
         implements ValueA, ...
 {
     @Override
-    default void forEach(BiConsumer<String, Object> action) {
+    public void forEach(BiConsumer<String, Object> action) {
         ValueA.super.forEach( action );
         // and so on, for other implemented Values interfaces
     }
