@@ -17,7 +17,7 @@
 	<inceptionYear>2020</inceptionYear>
 	<organization>
 		<name>SciJava</name>
-		<url>http://www.scijava.org</url>
+		<url>https://scijava.org</url>
 	</organization>
 	<licenses>
 		<license>
@@ -38,8 +38,8 @@
 
 	<mailingLists>
 		<mailingList>
-			<name>ImageJ Forum</name>
-			<archive>http://forum.imagej.net/</archive>
+			<name>Image.sc Forum</name>
+			<archive>https://forum.image.sc/tag/scijava</archive>
 		</mailingList>
 	</mailingLists>
 
@@ -73,8 +73,7 @@
 		<developer>
 			<id>tpietzsch</id>
 			<name>Tobias Pietzsch</name>
-			<email>pietzsch@mpi-cbg.de</email>
-			<url>http://imagej.net/User:Pietzsch</url>
+			<url>https://imagej.net/people/tpietzsch</url>
 			<roles>
 				<role>lead</role>
 				<role>developer</role>
