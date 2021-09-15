@@ -54,8 +54,8 @@
 		<url>https://github.com/scijava/scijava-optional/issues</url>
 	</issueManagement>
 	<ciManagement>
-		<system>Travis CI</system>
-		<url>https://travis-ci.com/scijava/scijava-optional</url>
+		<system>GitHub Actions</system>
+		<url>https://github.com/scijava/scijava-optional/actions</url>
 	</ciManagement>
 
 	<properties>
@@ -66,7 +66,7 @@
 		<license.copyrightOwners>Max Planck Institute of Molecular Cell Biology and Genetics</license.copyrightOwners>
 
 		<!-- NB: Deploy releases to the SciJava Maven repository. -->
-		<releaseProfiles>deploy-to-scijava</releaseProfiles>
+		<releaseProfiles>sign,deploy-to-scijava</releaseProfiles>
 	</properties>
 
 	<developers>

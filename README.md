@@ -1,4 +1,4 @@
-[![](https://travis-ci.com/scijava/scijava-optional.svg?branch=master)](https://travis-ci.com/scijava/scijava-optional)
+[![](https://github.com/scijava/scijava-optional/actions/workflows/build-main.yml/badge.svg)](https://github.com/scijava/scijava-optional/actions/workflows/build-main.yml)
 
 # scijava-optional
 
