@@ -9,7 +9,7 @@
 	</parent>
 
 	<artifactId>scijava-optional</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.2-SNAPSHOT</version>
 
 	<name>SciJava Optional</name>
 	<description>Helpers for emulating named and default arguments</description>
