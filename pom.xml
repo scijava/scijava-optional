@@ -9,7 +9,7 @@
 	</parent>
 
 	<artifactId>scijava-optional</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.1</version>
 
 	<name>SciJava Optional</name>
 	<description>Helpers for emulating named and default arguments</description>
@@ -46,7 +46,7 @@
 	<scm>
 		<connection>scm:git:git://github.com/scijava/scijava-optional</connection>
 		<developerConnection>scm:git:git@github.com:scijava/scijava-optional</developerConnection>
-		<tag>HEAD</tag>
+		<tag>scijava-optional-1.0.1</tag>
 		<url>https://github.com/scijava/scijava-optional</url>
 	</scm>
 	<issueManagement>
