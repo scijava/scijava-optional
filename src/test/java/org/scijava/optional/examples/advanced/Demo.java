@@ -2,7 +2,7 @@
  * #%L
  * SciJava Optional library for emulating named and default arguments.
  * %%
- * Copyright (C) 2020 - 2021 SciJava developers.
+ * Copyright (C) 2020 - 2026 SciJava developers.
  * %%
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
