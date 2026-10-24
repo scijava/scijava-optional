@@ -6,6 +6,7 @@ pom.xml.next
 .classpath
 .project
 .settings/
+/.factorypath
 /samples/
 *.ucls
 .idea/
